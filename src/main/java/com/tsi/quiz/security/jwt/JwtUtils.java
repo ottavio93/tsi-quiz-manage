@@ -16,11 +16,10 @@ import io.jsonwebtoken.*;
 public class JwtUtils {
 	private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
 
-	@Value("${bezkoder.app.jwtSecret}")
-	private String jwtSecret;
 
-	@Value("${bezkoder.app.jwtExpirationMs}")
-	private int jwtExpirationMs;
+	private String jwtSecret="ggj";
+
+	private int jwtExpirationMs=23232;
 
 	public String generateJwtToken(Authentication authentication) {
 
