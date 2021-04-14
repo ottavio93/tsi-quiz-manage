@@ -14,7 +14,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>tsi-quiz</name>
 	<description>Demo project </description>
-<packaging>war</packaging>
+
 	<properties>
 	
 		
