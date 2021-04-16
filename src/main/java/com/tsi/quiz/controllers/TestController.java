@@ -35,6 +35,7 @@ import com.tsi.quiz.datatransfer.QuizRequest;
 import com.tsi.quiz.datatransfer.TipoQuizDelete;
 import com.tsi.quiz.datatransfer.TipoQuizRequest;
 import com.tsi.quiz.datatransfer.TipoQuizUpdate;
+import com.tsi.quiz.datatransfer.UserResponse;
 import com.tsi.quiz.models.Answer;
 import com.tsi.quiz.models.PlayAnswer;
 import com.tsi.quiz.models.PlayQuiz;
@@ -110,7 +111,15 @@ public class TestController {
 	    }
 	
 
-	
+	   @PostMapping("/role")
+	    
+	    public ResponseEntity<Void> createrole( @Valid @RequestBody UserResponse userRole) {
+	    	System.out.print("noooooooooooooo");
+	    	quizService.createuserRole(userRole);
+	    	System.out.print("noooooooooooooooooooooooooo");
+
+	        return new ResponseEntity<>(HttpStatus.CREATED);
+	    }
 	    @PostMapping("createQuiz")
 	    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
 	    public ResponseEntity<Void> createQuiz( @Valid @RequestBody QuizRequest quiz) {

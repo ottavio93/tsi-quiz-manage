@@ -9,7 +9,8 @@ import java.util.List;
 import java.util.Set;
 
 import org.springframework.transaction.annotation.Transactional;
-	import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 	import org.springframework.stereotype.Service;
 
 import com.tsi.quiz.datatransfer.AnswerRequest;
@@ -17,11 +18,13 @@ import com.tsi.quiz.datatransfer.PlayQuizResponse;
 import com.tsi.quiz.datatransfer.QuestionRequest;
 import com.tsi.quiz.datatransfer.QuizRequest;
 import com.tsi.quiz.datatransfer.TipoQuizRequest;
+import com.tsi.quiz.datatransfer.UserResponse;
 import com.tsi.quiz.models.Answer;
 import com.tsi.quiz.models.PlayAnswer;
 import com.tsi.quiz.models.PlayQuiz;
 import com.tsi.quiz.models.Question;
 import com.tsi.quiz.models.Quiz;
+import com.tsi.quiz.models.Role;
 import com.tsi.quiz.models.TipoQuiz;
 import com.tsi.quiz.models.User;
 import com.tsi.quiz.repository.AnswerRepository;
@@ -29,6 +32,7 @@ import com.tsi.quiz.repository.PlayAnswerRepository;
 import com.tsi.quiz.repository.PlayQuizRepository;
 import com.tsi.quiz.repository.QuestionRepository;
 import com.tsi.quiz.repository.QuizRepository;
+import com.tsi.quiz.repository.RoleRepository;
 import com.tsi.quiz.repository.TipoQuizRepository;
 import com.tsi.quiz.repository.UserRepository;
 
@@ -47,7 +51,7 @@ private TipoQuizRepository tipoQuizRepository;
  private AnswerRepository answerRepository;
     private PlayAnswerRepository playAnswerRepository;
     private PlayQuizRepository playQuizRepository;
-    
+    private RoleRepository  roleRepository;
     
 	public void createPlayQuiz(PlayQuizResponse playQuizResponse) {
 		PlayQuiz playQuiz=new PlayQuiz();
@@ -58,7 +62,15 @@ private TipoQuizRepository tipoQuizRepository;
 		playQuiz.setPlayQuizId(playQuizResponse.getPlayQuizId());
 		playQuizRepository.save(playQuiz);
 		}
-    
+	public void createuserRole(UserResponse userRole) {
+		Role role=new Role();
+		
+		
+		userRole.setName(userRole.getName());
+	
+		
+		roleRepository.save(role);
+		}
 	@Transactional(readOnly = false)
 	public void createQuiz(QuizRequest quizRequest) {
 		Quiz quiz=new Quiz();
