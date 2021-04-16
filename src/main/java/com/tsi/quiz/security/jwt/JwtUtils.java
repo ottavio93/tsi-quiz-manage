@@ -19,7 +19,7 @@ public class JwtUtils {
 
 	private String jwtSecret="HRlELXqpSB";
 
-	private int jwtExpirationMs=23232;
+	private long jwtExpirationMs=234434232;
 
 	public String generateJwtToken(Authentication authentication) {
 
