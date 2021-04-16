@@ -17,7 +17,7 @@ public class JwtUtils {
 	private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
 
 
-	private String jwtSecret="ggj";
+	private String jwtSecret="HRlELXqpSB";
 
 	private int jwtExpirationMs=23232;
 
