@@ -20,6 +20,7 @@ import com.tsi.quiz.datatransfer.QuizRequest;
 import com.tsi.quiz.datatransfer.TipoQuizRequest;
 import com.tsi.quiz.datatransfer.UserResponse;
 import com.tsi.quiz.models.Answer;
+import com.tsi.quiz.models.ERole;
 import com.tsi.quiz.models.PlayAnswer;
 import com.tsi.quiz.models.PlayQuiz;
 import com.tsi.quiz.models.Question;
@@ -66,7 +67,7 @@ private TipoQuizRepository tipoQuizRepository;
 		Role role=new Role();
 		
 		
-		userRole.setName(userRole.getName());
+		role.setName(ERole.ROLE_USER);
 	
 		
 		roleRepository.save(role);
