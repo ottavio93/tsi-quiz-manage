@@ -32,7 +32,7 @@ public class Answer {
 	 String answerId;
 	@Lob
 	@Type(type = "org.hibernate.type.TextType")
-    @Column(name = "risposta")
+    @Column(name = "risposta",length = 1024)
  String answer;
   
 
