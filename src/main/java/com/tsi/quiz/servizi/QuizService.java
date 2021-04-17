@@ -63,15 +63,15 @@ private TipoQuizRepository tipoQuizRepository;
 		playQuiz.setPlayQuizId(playQuizResponse.getPlayQuizId());
 		playQuizRepository.save(playQuiz);
 		}
-	public void createuserRole(UserResponse userRole) {
-		Role role=new Role();
-		
-		
-		role.setName(ERole.ROLE_USER);
-	
-		
-		roleRepository.save(role);
-		}
+//	public void createuserRole(UserResponse userRole) {
+//		Role role=new Role();
+//		
+//		
+//		role.setName(ERole.ROLE_USER);
+//	
+//		
+//		roleRepository.save(role);
+//		}
 	@Transactional(readOnly = false)
 	public void createQuiz(QuizRequest quizRequest) {
 		Quiz quiz=new Quiz();
