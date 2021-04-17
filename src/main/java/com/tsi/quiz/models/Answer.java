@@ -30,9 +30,8 @@ public class Answer {
 	@Id
 	@Column(unique = true,name = "id_risposta")
 	 String answerId;
-	@Lob
-	@Type(type = "org.hibernate.type.TextType")
-    @Column(name = "risposta",length = 1024)
+
+    @Column(name = "risposta",columnDefinition="TEXT")
  String answer;
   
 
