@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 
 import javax.persistence.Table;
 
-
+import org.hibernate.annotations.Type;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,6 +31,7 @@ public class Answer {
 	@Column(unique = true,name = "id_risposta")
 	 String answerId;
 	@Lob
+	@Type(type = "org.hibernate.type.TextType")
     @Column(name = "risposta")
  String answer;
   
