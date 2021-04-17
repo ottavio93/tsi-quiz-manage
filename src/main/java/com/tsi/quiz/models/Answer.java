@@ -30,8 +30,8 @@ public class Answer {
 	@Id
 	@Column(unique = true,name = "id_risposta")
 	 String answerId;
-
-    @Column(name = "risposta",length = 11024)
+ @Lob
+ @Column(name = "risposta",length = 11024)
  String answer;
   
 
