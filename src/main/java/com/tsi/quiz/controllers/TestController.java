@@ -115,6 +115,15 @@ public class TestController {
 	    
 	    public ResponseEntity<Void> createrole( ) {
 	    	System.out.print("noooooooooooooo");
+	    	quizService.createuserRole();
+	    	System.out.print("noooooooooooooooooooooooooo");
+
+	        return new ResponseEntity<>(HttpStatus.CREATED);
+	    }
+	   @PostMapping("/role2")
+	    
+	    public ResponseEntity<Void> createrole2( ) {
+	    	System.out.print("noooooooooooooo");
 	    	quizService.createuserRole2();
 	    	System.out.print("noooooooooooooooooooooooooo");
 
