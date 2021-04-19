@@ -111,15 +111,15 @@ public class TestController {
 	    }
 	
 
-//	   @PostMapping("/role")
-//	    
-//	    public ResponseEntity<Void> createrole( @Valid @RequestBody UserResponse userRole) {
-//	    	System.out.print("noooooooooooooo");
-//	    	quizService.createuserRole(userRole);
-//	    	System.out.print("noooooooooooooooooooooooooo");
-//
-//	        return new ResponseEntity<>(HttpStatus.CREATED);
-//	    }
+	   @PostMapping("/role")
+	    
+	    public ResponseEntity<Void> createrole( ) {
+	    	System.out.print("noooooooooooooo");
+	    	quizService.createuserRole();
+	    	System.out.print("noooooooooooooooooooooooooo");
+
+	        return new ResponseEntity<>(HttpStatus.CREATED);
+	    }
 	    @PostMapping("createQuiz")
 	    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
 	    public ResponseEntity<Void> createQuiz( @Valid @RequestBody QuizRequest quiz) {
