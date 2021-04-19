@@ -414,7 +414,31 @@ public class TestController {
 	    	
 	    	return new ResponseEntity<>(HttpStatus.CREATED);
 	    }
-	    
+	    @Transactional
+	    @PostMapping("/deleteQuestion2")
+	    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+	    public ResponseEntity<Void> deleteQuestion2() {
+	    	System.out.print("noooooooooooooo");
+//	    	auth = SecurityContextHolder.getContext().getAuthentication();
+//	    	
+//	    	String username = auth.getName();
+//	    	System.out.print("allora che si fan             "+username);
+//	    	if (username.equals(postDelete.getUserName())) {
+	    	Optional<Question> optionalquestion=questionRepository.findById("htgfmnib");
+	     	System.out.println("fatto");
+	    	Question question = optionalquestion
+	    			.orElseThrow(() -> new UsernameNotFoundException("No question " +
+							"Found with username : " ));
+	       	System.out.print("noooooooofffddddddddddddddddddddoooooo");
+	    	answerRepository.removeByQuestion(question);
+	    	playAnswerRepository.removeByQuestion(question);
+	    questionRepository.deleteById("htgfmnib");
+	    	System.out.print("cancellato");
+
+	        
+	    	
+	    	return new ResponseEntity<>(HttpStatus.CREATED);
+	    }
 	    
 	    @Transactional
 	    @PostMapping("answerDelete")
