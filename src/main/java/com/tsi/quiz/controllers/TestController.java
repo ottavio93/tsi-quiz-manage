@@ -475,7 +475,7 @@ public class TestController {
 	    	Quiz quiz = optionalquiz
 	    			.orElseThrow(() -> new UsernameNotFoundException("No tipoQuiz " +
 							"Found with tipoQuizId : " ));
-	    	
+	    	System.out.print("nooooooooofgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggooooo");
 	     	List<TipoQuiz> tipiQuiz=   tipoQuizRepository.findByQuiz(quiz);
 	    	
 	     	for (TipoQuiz q:tipiQuiz) {
