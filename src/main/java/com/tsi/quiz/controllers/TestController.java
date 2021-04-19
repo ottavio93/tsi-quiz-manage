@@ -470,7 +470,24 @@ public class TestController {
 	    @PostMapping("quizDelete")
 	    public ResponseEntity<Void> quizDelete( @RequestBody QuizDelete quizDelete) {
 	    	System.out.print("noooooooooooooo");
-
+	    	
+	    	Optional<Quiz> optionalquiz=quizRepository.findById(quizDelete.getQuizId());
+	    	Quiz quiz = optionalquiz
+	    			.orElseThrow(() -> new UsernameNotFoundException("No tipoQuiz " +
+							"Found with tipoQuizId : " ));
+	    	
+	     	List<TipoQuiz> tipiQuiz=   tipoQuizRepository.findByQuiz(quiz);
+	    	
+	     	for (TipoQuiz q:tipiQuiz) {
+	     		TipoQuizDelete tipoQuizDelete=new TipoQuizDelete(q.getTipoQuizId());
+	     		
+	     		tipoquizDelete(tipoQuizDelete);
+	    
+	     	System.out.println("fatto");
+	     	}
+	     
+	       	
+	     
 	       	
 	 
 	    	quizRepository.deleteById(quizDelete.getQuizId());
