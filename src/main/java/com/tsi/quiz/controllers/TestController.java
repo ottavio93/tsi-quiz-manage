@@ -490,7 +490,7 @@ public class TestController {
 	     return new ResponseEntity<>(HttpStatus.CREATED);
 	    }
 	    @Transactional
-	    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+	    
 	    @PostMapping("quizDelete2")
 	    public ResponseEntity<Void> quizDelete2( ) {
 	    
