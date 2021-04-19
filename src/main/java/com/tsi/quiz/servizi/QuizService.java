@@ -67,7 +67,7 @@ private TipoQuizRepository tipoQuizRepository;
 		Role role=new Role();
 		
 		
-		role.setName(ERole.ROLE_ADMIN);
+		role.setName(ERole.ROLE_USER);
 	
 		
 		roleRepository.save(role);
