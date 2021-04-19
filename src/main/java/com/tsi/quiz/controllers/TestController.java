@@ -486,13 +486,31 @@ public class TestController {
 	     	System.out.println("fatto");
 	     	}
 	     
-	       	
-	     
-	       	
-	 
-	    	quizRepository.deleteById(quizDelete.getQuizId());
-	        
+	    quizRepository.deleteById(quizDelete.getQuizId());
+	     return new ResponseEntity<>(HttpStatus.CREATED);
+	    }
+	    @Transactional
+	    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+	    @PostMapping("quizDelete2")
+	    public ResponseEntity<Void> quizDelete2( ) {
+	    
 	    	
-	    	return new ResponseEntity<>(HttpStatus.CREATED);
+	    	Optional<Quiz> optionalquiz=quizRepository.findById("cu78ypgm");
+	    	Quiz quiz = optionalquiz
+	    			.orElseThrow(() -> new UsernameNotFoundException("No tipoQuiz " +
+							"Found with tipoQuizId : " ));
+	    	System.out.print("nooooooooofgggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggooooo");
+	     	List<TipoQuiz> tipiQuiz=   tipoQuizRepository.findByQuiz(quiz);
+	    	
+	     	for (TipoQuiz q:tipiQuiz) {
+	     		TipoQuizDelete tipoQuizDelete=new TipoQuizDelete(q.getTipoQuizId());
+	     		
+	     		tipoquizDelete(tipoQuizDelete);
+	    
+	     	System.out.println("fatto");
+	     	}
+	     
+	    quizRepository.deleteById("cu78ypgm");
+	     return new ResponseEntity<>(HttpStatus.CREATED);
 	    }
 }
