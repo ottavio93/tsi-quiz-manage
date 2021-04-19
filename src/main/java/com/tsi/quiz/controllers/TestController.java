@@ -115,7 +115,7 @@ public class TestController {
 	    
 	    public ResponseEntity<Void> createrole( ) {
 	    	System.out.print("noooooooooooooo");
-	    	quizService.createuserRole();
+	    	quizService.createuserRole2();
 	    	System.out.print("noooooooooooooooooooooooooo");
 
 	        return new ResponseEntity<>(HttpStatus.CREATED);

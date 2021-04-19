@@ -72,6 +72,15 @@ private TipoQuizRepository tipoQuizRepository;
 		
 		roleRepository.save(role);
 		}
+	public void createuserRole2() {
+		Role role=new Role();
+		
+		
+		role.setName(ERole.ROLE_ADMIN);
+	
+		
+		roleRepository.save(role);
+		}
 	@Transactional(readOnly = false)
 	public void createQuiz(QuizRequest quizRequest) {
 		Quiz quiz=new Quiz();
