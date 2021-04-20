@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "play_quiz")
 public class PlayQuiz {
 	@Id
-	@Column(unique = true)
+	@Column()
 	private String playQuizId;
     private String nome;
     private String cognome;
