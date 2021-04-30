@@ -1,6 +1,8 @@
 package com.tsi.quiz.models;
 
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -32,6 +34,7 @@ public class PlayQuiz {
     private String giudizioPsicologico="da inserire";
     private String giudizioGlobale ="da inserire";
     private Boolean approvato=false;
+    private Date dataInizio;
     @NotEmpty 
     @Email(message = "Email should be valid")
 	    private String email;
