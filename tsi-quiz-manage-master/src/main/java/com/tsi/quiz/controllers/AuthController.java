@@ -23,7 +23,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tsi.quiz.models.ERole;
 import com.tsi.quiz.models.Role;
 import com.tsi.quiz.models.User;
+import com.tsi.quiz.models.UserQuiz;
 import com.tsi.quiz.payload.request.LoginRequest;
+import com.tsi.quiz.payload.request.SignUserQuiz;
 import com.tsi.quiz.payload.request.SignupRequest;
 import com.tsi.quiz.payload.response.JwtResponse;
 import com.tsi.quiz.payload.response.MessageResponse;
@@ -95,7 +97,7 @@ public class AuthController {
 		Set<Role> roles = new HashSet<>();
 
 		if (strRoles == null) {
-			Role userRole = roleRepository.findByName(ERole.ROLE_USER)
+			Role userRole = roleRepository.findByName(ERole.ROLE_MODERATOR)
 					.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 			roles.add(userRole);
 		}
@@ -120,6 +122,39 @@ public class AuthController {
 					roles.add(userRole);
 				}
 			});
+		}
+
+		user.setRoles(roles);
+		userRepository.save(user);
+
+		return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+	}
+	@PostMapping("/signupUser")
+	public ResponseEntity<?> registerUserQuiz(@Valid @RequestBody SignupRequest signUpRequest) {
+		if (userRepository.existsByUsername(signUpRequest.getUsername())) {
+			return ResponseEntity
+					.badRequest()
+					.body(new MessageResponse("Error: Username is already taken!"));
+		}
+
+		if (userRepository.existsByEmail(signUpRequest.getEmail())) {
+			return ResponseEntity
+					.badRequest()
+					.body(new MessageResponse("Error: Email is already in use!"));
+		}
+
+		// Create new user's account
+		User user = new User(signUpRequest.getUsername(), 
+							 signUpRequest.getEmail(),
+							 encoder.encode(signUpRequest.getPassword()));
+
+		Set<String> strRoles = signUpRequest.getRole();
+		Set<Role> roles = new HashSet<>();
+
+		if (strRoles == null) {
+			Role userRole = roleRepository.findByName(ERole.ROLE_USER)
+					.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+			roles.add(userRole);
 		}
 
 		user.setRoles(roles);
