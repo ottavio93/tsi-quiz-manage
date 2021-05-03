@@ -139,7 +139,7 @@ public class TestController {
 	        return new ResponseEntity<>(HttpStatus.CREATED);
 	    }
 	    @PostMapping("createQuiz")
-	    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+	    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
 	    public ResponseEntity<Void> createQuiz( @Valid @RequestBody QuizRequest quiz) {
 	    	System.out.print("noooooooooooooo");
 	    	quizService.createQuiz(quiz);
@@ -149,7 +149,7 @@ public class TestController {
 	    }
 	    
 	    @PostMapping("createArgomentoQuiz")
-	    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+	    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
 	    public ResponseEntity<Void> createArgomentoQuiz( @Valid @RequestBody TipoQuizRequest tipoquiz) {
 	    	System.out.print("siiiiii");
 	    	quizService.createTipoQuiz(tipoquiz);
@@ -203,7 +203,7 @@ public class TestController {
 	    
 	    
 	    @PostMapping("/editPlayAnswer")
-	    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+	    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
 
 	public ResponseEntity<String> editPlayAnswer(@Valid @RequestBody IdAnswerObj playAnswerId){
 	    	System.out.print("noooooooooooooooooooooooooo");
@@ -227,7 +227,7 @@ public class TestController {
 	    }
 	    
 	    @PutMapping("editApprovato/{playQuizId}")
-	    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+	    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
 
 	      public void editApprovato(@PathVariable("playQuizId")String playQuizId){
 		    	System.out.print("noooooooooooooooooooooooooo");
@@ -258,7 +258,7 @@ public class TestController {
 	    
 	    
 	    @GetMapping("/user/{username}")
-		@PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+		@PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
 		public ResponseEntity<List<Quiz>> userAccess(@PathVariable("username")String username) {
 	    	System.out.print("lllllllllknnnnnnnnnnnnnnn");
 	    	List<Quiz> lq=	quizService.getAllQuizByNome(username);
@@ -285,7 +285,7 @@ public class TestController {
 	    }
 	    
 	    @GetMapping("/QuizById/{idQuiz}")
-	    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+	    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
 	    public ResponseEntity<Quiz> getQuizById(@PathVariable("idQuiz")String idQuiz ) {
 		 System.out.print("lllllllllknnnnnnnnnnnnnnn");	
 		 Optional<Quiz>  t=quizRepository.findById(idQuiz);
@@ -297,7 +297,7 @@ public class TestController {
 	    }
 	    
 	    @GetMapping("/TipiDelQuiz/{idQuiz}")
-	    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+	    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
 	    public ResponseEntity<List<TipoQuiz>> geTipiQuizById(@PathVariable("idQuiz")String idQuiz ) {
 		 System.out.print("lllllllllknnnnnnnnnnnnnnn");	
 		 List<TipoQuiz> t=quizService.geTipiQuizById(idQuiz);
@@ -305,7 +305,7 @@ public class TestController {
 	        return ResponseEntity.status(OK).body(t);
 	    }
 	    @GetMapping("/TipoQuiz/{idtipoQuiz}")
-		@PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+		@PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
 	    public ResponseEntity<TipoQuiz> getTipoQuizById(@PathVariable("idtipoQuiz") String idtipoQuiz ) {
 		 System.out.print("lllllllllknnnnnnnnnnnnnnn");	
 		 Optional<TipoQuiz> t=tipoQuizRepository.findById(idtipoQuiz);
@@ -434,7 +434,7 @@ public class TestController {
 	    }
 	    @Transactional
 	    @PostMapping("/deleteQuestion2")
-	    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+	    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
 	    public ResponseEntity<Void> deleteQuestion2() {
 	    	System.out.print("noooooooooooooo");
 //	    	auth = SecurityContextHolder.getContext().getAuthentication();
@@ -475,7 +475,7 @@ public class TestController {
 	    	return new ResponseEntity<>(HttpStatus.CREATED);
 	    }
 	    @Transactional
-	    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+	    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
 	    @PostMapping("tipoquizDelete")
 	    public ResponseEntity<Void> tipoquizDelete( @RequestBody TipoQuizDelete tipoquizDelete) {
 	    	System.out.print("noooooooooooooo");
@@ -508,7 +508,7 @@ public class TestController {
 	    	return new ResponseEntity<>(HttpStatus.CREATED);
 	    }
 	    @Transactional
-	    @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+	    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
 	    @PostMapping("quizDelete")
 	    public ResponseEntity<Void> quizDelete( @RequestBody QuizDelete quizDelete) {
 	    	System.out.print("noooooooooooooo");
