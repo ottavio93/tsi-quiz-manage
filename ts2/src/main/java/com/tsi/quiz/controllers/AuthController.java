@@ -2,6 +2,7 @@ package com.tsi.quiz.controllers;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -13,6 +14,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tsi.quiz.models.ERole;
+import com.tsi.quiz.models.PlayQuiz;
 import com.tsi.quiz.models.Role;
 import com.tsi.quiz.models.User;
 import com.tsi.quiz.models.UserQuiz;
@@ -55,7 +58,13 @@ public class AuthController {
 
 	@PostMapping("/signin")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
+boolean verita=false;
+Optional<User> u=userRepository.findByUsername(loginRequest.getUsername());
+User user = u
 
+.orElseThrow(() -> new UsernameNotFoundException("No user " + "Found with username : "));
+verita=user.isEnabled();
+if (verita){
 		Authentication authentication = authenticationManager.authenticate(
 				new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
@@ -73,7 +82,27 @@ public class AuthController {
 												 userDetails.getEmail(), 
 												 roles));
 	}
+else {
+	return  (ResponseEntity<?>) ResponseEntity.ok();
+}
+	}
+	@PostMapping("/setEnabled")
+		public ResponseEntity<?> setEnabled(@Valid @RequestBody LoginRequest loginRequest) {
+			
+			Optional<User> u=userRepository.findByUsername(loginRequest.getUsername());
+			User user = u
 
+			.orElseThrow(() -> new UsernameNotFoundException("No user " + "Found with username : "));
+			user.setEnabled(false);
+			return ResponseEntity.ok(new JwtResponse(null, 
+					null, 
+					null, 
+					null, 
+					null));
+	}
+	
+	
+	
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
 		if (userRepository.existsByUsername(signUpRequest.getUsername())) {
