@@ -61,6 +61,7 @@ private TipoQuizRepository tipoQuizRepository;
 		playQuiz.setEmail(playQuizResponse.getEmail());
 		playQuiz.setNome(playQuizResponse.getNome());
 		playQuiz.setPlayQuizId(playQuizResponse.getPlayQuizId());
+		playQuiz.setCreated(Instant.now());
 		playQuizRepository.save(playQuiz);
 		}
 	public void createuserRole() {

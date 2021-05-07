@@ -1,6 +1,7 @@
 package com.tsi.quiz.models;
 
 
+import java.time.Instant;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -35,6 +36,7 @@ public class PlayQuiz {
     private String giudizioGlobale ="da inserire";
     private Boolean approvato=false;
     private Date dataInizio;
+    private Instant created;
     @NotEmpty 
     @Email(message = "Email should be valid")
 	    private String email;
