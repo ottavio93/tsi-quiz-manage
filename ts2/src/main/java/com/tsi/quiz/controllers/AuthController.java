@@ -27,6 +27,7 @@ import com.tsi.quiz.models.PlayQuiz;
 import com.tsi.quiz.models.Role;
 import com.tsi.quiz.models.User;
 import com.tsi.quiz.models.UserQuiz;
+import com.tsi.quiz.payload.request.EnableUserRequest;
 import com.tsi.quiz.payload.request.LoginRequest;
 import com.tsi.quiz.payload.request.SignUserQuiz;
 import com.tsi.quiz.payload.request.SignupRequest;
@@ -83,11 +84,11 @@ if (verita){
 												 roles));
 	}
 else {
-	return  (ResponseEntity<?>) ResponseEntity.ok();
+	return ResponseEntity.ok("errore");
 }
 	}
-	@PostMapping("/setEnabled")
-		public ResponseEntity<?> setEnabled(@Valid @RequestBody LoginRequest loginRequest) {
+	@PostMapping("/disableUser")
+		public ResponseEntity<?> disableUser(@Valid @RequestBody EnableUserRequest loginRequest) {
 			
 			Optional<User> u=userRepository.findByUsername(loginRequest.getUsername());
 			User user = u
@@ -101,7 +102,20 @@ else {
 					null));
 	}
 	
-	
+	@PostMapping("/enableUser")
+	public ResponseEntity<?> enableUser(@Valid @RequestBody EnableUserRequest loginRequest) {
+		
+		Optional<User> u=userRepository.findByUsername(loginRequest.getUsername());
+		User user = u
+
+		.orElseThrow(() -> new UsernameNotFoundException("No user " + "Found with username : "));
+		user.setEnabled(false);
+		return ResponseEntity.ok(new JwtResponse(null, 
+				null, 
+				null, 
+				null, 
+				null));
+}
 	
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
