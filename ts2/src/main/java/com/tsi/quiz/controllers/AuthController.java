@@ -95,6 +95,7 @@ else {
 
 			.orElseThrow(() -> new UsernameNotFoundException("No user " + "Found with username : "));
 			user.setEnabled(false);
+			userRepository.save(user);
 			return ResponseEntity.ok(new JwtResponse(null, 
 					null, 
 					null, 
@@ -109,7 +110,8 @@ else {
 		User user = u
 
 		.orElseThrow(() -> new UsernameNotFoundException("No user " + "Found with username : "));
-		user.setEnabled(false);
+		user.setEnabled(true);
+		userRepository.save(user);
 		return ResponseEntity.ok(new JwtResponse(null, 
 				null, 
 				null, 

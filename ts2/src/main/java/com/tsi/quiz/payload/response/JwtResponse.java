@@ -18,6 +18,11 @@ public class JwtResponse {
 		this.roles = roles;
 	}
 
+	public String  stampaerrore() {
+		String s="errore" ;
+				return s;
+	}
+
 	public String getAccessToken() {
 		return token;
 	}
