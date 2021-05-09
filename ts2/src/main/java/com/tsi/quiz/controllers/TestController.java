@@ -276,7 +276,7 @@ public class TestController {
 	        return ResponseEntity.status(OK).body(t);
 	    }
 	    @GetMapping("/allUser")
-	    @PreAuthorize("hasRole('ADMIN')")
+	    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
 	    public ResponseEntity<List<User>> getAllusers( ) {
 		 System.out.print("lllllllllknnnnnnnnnnnnnnn");	
 		 List<User> t=userRepository.findAll();
