@@ -203,6 +203,7 @@ public class PlayQuizService {
 
 		
 		else if(question.isRispostaMultipla()) {
+			System.out.print("	PORFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA     " + playQuiz.getPunteggioTecnico());
 			Long nuovoPoint;
 		String risposteCorrette = "";
 
