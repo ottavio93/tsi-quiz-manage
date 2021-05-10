@@ -463,11 +463,11 @@ public class TestController {
 	    public ResponseEntity<Void> deleteAswer( @RequestBody AnswerDelete answerDelete) {
 	    	System.out.print("noooooooooooooo");
 
-	    	answerRepository.deleteById(answerDelete.getAnswerId());
+	    	
 	    	
 	       
-	    	playAnswerRepository.deleteById(answerDelete.getAnswerId());
-	   
+	    	
+	    	answerRepository.deleteById(answerDelete.getAnswerId());
 	    	System.out.print("cancellato");
 
 	        
