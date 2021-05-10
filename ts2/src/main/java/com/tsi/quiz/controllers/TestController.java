@@ -466,8 +466,9 @@ public class TestController {
 	    	
 	    	
 	       
-	    	playAnswerRepository.deleteById(answerDelete.getAnswerId());
+	    	
 	    	answerRepository.deleteById(answerDelete.getAnswerId());
+	    	
 	    	System.out.print("cancellato");
 
 	        
