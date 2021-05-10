@@ -31,7 +31,8 @@ public class Answer {
 	@Column(name = "id_risposta")
 	 String answerId;
 
-	 @Lob
+	@Lob
+	@Type(type = "org.hibernate.type.TextType")
 	 @Column(name = "risposta",length = 11024)
  String answer;
   
