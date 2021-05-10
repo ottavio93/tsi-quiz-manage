@@ -511,7 +511,7 @@ public class TestController {
 	    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
 	    @PostMapping("quizDelete")
 	    public ResponseEntity<Void> quizDelete( @RequestBody QuizDelete quizDelete) {
-	    	System.out.print("noooooooooooooo");
+	    	System.out.print("noooooooooooooyo");
 	    	
 	    	Optional<Quiz> optionalquiz=quizRepository.findById(quizDelete.getQuizId());
 	    	Quiz quiz = optionalquiz
