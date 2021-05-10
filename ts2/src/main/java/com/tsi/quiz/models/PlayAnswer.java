@@ -8,6 +8,8 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Type;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,6 +27,7 @@ public class PlayAnswer {
 	private String playAnswerId;
 	private Long tempo;
 	 @Lob
+	 @Type(type = "org.hibernate.type.TextType")
 	 @Column(name = "risposta")
 	 String answer;
 	 boolean corretta;
