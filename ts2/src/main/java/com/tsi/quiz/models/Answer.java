@@ -31,7 +31,7 @@ public class Answer {
 	@Column(unique = true,name = "id_risposta")
 	 String answerId;
 
-	@Lob
+	
  String answer;
   
 
