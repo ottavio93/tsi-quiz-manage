@@ -31,7 +31,7 @@ public class Answer {
 	@Column(unique = true,name = "id_risposta")
 	 String answerId;
 
- @Column(name = "risposta",length = 11024)
+ @Column(name = "risposta",length = 1024)
  String answer;
   
 
