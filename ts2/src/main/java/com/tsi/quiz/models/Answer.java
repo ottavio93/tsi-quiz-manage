@@ -28,7 +28,7 @@ import lombok.NoArgsConstructor;
 public class Answer {
 
 	@Id
-	@Column(,name = "id_risposta")
+	@Column(name = "id_risposta")
 	 String answerId;
 
 	 @Lob
