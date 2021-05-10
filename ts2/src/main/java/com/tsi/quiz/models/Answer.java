@@ -28,10 +28,11 @@ import lombok.NoArgsConstructor;
 public class Answer {
 
 	@Id
-	@Column(unique = true,name = "id_risposta")
+	@Column(,name = "id_risposta")
 	 String answerId;
 
- @Column(name = "risposta",length = 1024)
+	 @Lob
+	 @Column(name = "risposta",length = 11024)
  String answer;
   
 
