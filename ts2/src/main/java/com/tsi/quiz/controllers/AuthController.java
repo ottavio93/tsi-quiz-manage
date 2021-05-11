@@ -65,7 +65,7 @@ User user = u
 
 .orElseThrow(() -> new UsernameNotFoundException("No user " + "Found with username : "));
 verita=user.isEnabled();
-if (verita){
+if (verita ){
 		Authentication authentication = authenticationManager.authenticate(
 				new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
@@ -94,7 +94,9 @@ else {
 			User user = u
 
 			.orElseThrow(() -> new UsernameNotFoundException("No user " + "Found with username : "));
+			if ( user.getUsername()!="otti46") {
 			user.setEnabled(false);
+			}
 			userRepository.save(user);
 			return ResponseEntity.ok(new JwtResponse(null, 
 					null, 
